@@ -12,15 +12,22 @@ class Librarian {
   }
 
   findBook(title) {
-    if (library.shelves.fantasy.includes(title)) {
-      return `Yes, we have ${tile}`
-    } else if (library.shelves.nonFiction.includes(title)) {
-      return `Yes, we have ${tile}`
-    } else if (library.shelves.fiction.includes(title)) {
-      `Yes, we have ${tile}`
-    } else {
-      return `Sorry, we do not have ${title}`
+    for (var shelf in this.library.shelves) {
+      for (var i = 0; i < this.library.shelves[shelf].length; i++) {
+        if (this.library.shelves[shelf][i].title === title) {
+          this.library.shelves[shelf].splice(i, 1)
+          return `Yes, we have ${title}`
+        }
+      }
+    }
+    return `Sorry, we do not have ${title}`
   }
+
+  calculateLateFee(days) {
+    return Math.ceil(days * .25)
+  }
+
 }
-} 
+
+
 module.exports = Librarian;

@@ -16,10 +16,10 @@ function addBook(library, book) {
 
 
 function checkoutBook(library, bookTitle) {
-  for (shelfKey in library.shelves) {
-    for (var i = 0; i < library.shelves[shelfKey].length; i++) {
-      if (bookTitle === library.shelves[shelfKey][i].title) {
-        library.shelves[shelfKey].splice(i, 1)
+  for (var shelf in library.shelves) {
+    for (var i = 0; i < library.shelves[shelf].length; i++) {
+      if (bookTitle === library.shelves[shelf][i].title) {
+        library.shelves[shelf].splice(i, 1)
         return `You have now checked out ${bookTitle} from the ${library.name}`
       }
     }
